@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider - Chaudhary Enterprises</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: url('https://media-s3-us-east-1.ceros.com/pcl-construction/images/2023/11/23/ce7f8faec60e9bd177c55371809ce153/lgh-june22-40-edit.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+            height: 100vh;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            max-width: 900px;
+            margin: auto;
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            color: #00FFC6;
+            font-size: 36px;
+        }
+        .slider-container {
+            position: relative;
+            max-width: 600px;
+            margin: auto;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+        .slider img, a img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slider img:hover, a img:hover {
+            transform: scale(1.2);
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        .nav-buttons button {
+            background: linear-gradient(to right, #FF416C, #FF4B2B);
+            color: white;
+            border: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 25px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: 0.3s;
+        }
+        .nav-buttons button:hover {
+            background: linear-gradient(to right, #FF4B2B, #FF416C);
+            transform: scale(1.1);
+        }
+        a img {
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>About Us</h1>
+        <b>If you want to visit our WhatsApp channel, click the icon below</b>
+        <br>
+        <a href="https://whatsapp.com/channel/0029VaTbzQ0GpLHXAs51zO3f" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp">
+            
+        </a>
+    </div>
+
+    <div class="slider-container" style="margin-top: 30px;">
+        <h2>Recent Completed Projects</h2>
+        <div class="slider">
+            <img id="slide" src="" alt="Project Image">
+        </div>
+        <div class="nav-buttons">
+            <button onclick="changeImage('prev', 'slide', projectImages)">Previous</button>
+            <button onclick="changeImage('next', 'slide', projectImages)">Next</button>
+        </div>
+    </div>
+
+    <div class="slider-container" style="margin-top: 30px;">
+        <h2>Project Gallery</h2>
+        <div class="slider">
+            <img id="gallery-slide" src="" alt="Gallery Image">
+        </div>
+        <div class="nav-buttons">
+            <button onclick="changeImage('prev', 'gallery-slide', galleryImages)">Previous</button>
+            <button onclick="changeImage('next', 'gallery-slide', galleryImages)">Next</button>
+        </div>
+    </div>
+
+    <script>
+        let projectImages = [
+            "https://www.keele.ac.uk/estates/projects/recentlycompletedprojects/csl-1-960x640.jpg",
+            "https://lirp.cdn-website.com/dc063bb4/dms3rep/multi/opt/FourPoints_1440x1080_RecentProjectsPhotos_0001_Kyles-640w.jpg",
+            "https://images.pexels.com/photos/323705/pexels-photo-323705.jpeg?auto=compress&cs=tinysrgb&w=600",
+            "https://anushfoundations.com/wp-content/uploads/2024/04/SHOLINGANALLUR-1024x1024.jpg",
+            "https://images.pexels.com/photos/439416/pexels-photo-439416.jpeg?auto=compress&cs=tinysrgb&w=600"
+        ];
+        
+        let galleryImages = [
+            "https://www.nation.com.pk/digital_images/large/2024-06-01/dawn-on-pakistan-s-construction-sector-analyzing-the-conditions-of-contract-2017-1717242557-7646.jpg",
+            "https://www.letsbuild.com/wp-content/uploads/2023/09/Depositphotos_90856786_xl-2015-scaled-2.jpg",
+            "https://static.vecteezy.com/system/resources/thumbnails/023/307/449/small_2x/ai-generative-exterior-of-modern-luxury-house-with-garden-and-beautiful-sky-photo.jpg",
+            "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=600",
+            "https://postandporch.com/cdn/shop/articles/AdobeStock_209124760.jpg?v=1662575433"
+        ];
+
+        function changeImage(direction, imgId, imgArray) {
+            let imgElement = document.getElementById(imgId);
+            let currentIndex = imgArray.indexOf(imgElement.src);
+            let newIndex = direction === 'next' ? (currentIndex + 1) % imgArray.length : (currentIndex - 1 + imgArray.length) % imgArray.length;
+            imgElement.src = imgArray[newIndex];
+        }
+        
+        document.getElementById('slide').src = projectImages[0];
+        document.getElementById('gallery-slide').src = galleryImages[0];
+    </script>
+</body>
+</html>
